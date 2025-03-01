@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import Hello from './components/Hello';
 import Button from './components/Button';
 import ConditionalJsx from './components/ConditionalJsx';
 import Form from './components/Form';
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Parent from './components/Parent';
 
 function App() {
   const fruits = [
@@ -16,10 +19,18 @@ function App() {
   ];
   return (
     <div className="App">
-      {/* <Hello fruits = {fruits}/> */}
-      {/* <Button color = "green"/>
-      <ConditionalJsx/> */}
+      <Parent/>
+      <Hello fruits = {fruits}/>
+      <Button color = "green"/>
+      <ConditionalJsx/>
       <Form/>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
+          <Route path='/contact' element={<Contact/>}></Route>
+        </Routes>
+      </Router>
     </div>
   )
 }
